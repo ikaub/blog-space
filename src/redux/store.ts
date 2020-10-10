@@ -1,4 +1,4 @@
-import {AnyAction, applyMiddleware, createStore, Store} from "redux";
+import {applyMiddleware, createStore, Store} from "redux";
 import postReducer from "./post-reducer";
 import thunk from "redux-thunk";
 import {persistStore, persistReducer} from "redux-persist";

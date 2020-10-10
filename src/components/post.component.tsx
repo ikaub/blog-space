@@ -1,5 +1,14 @@
 import React from "react";
-import {Card, CardContent, Typography, CardActions, Button, IconButton, makeStyles, CardHeader} from "@material-ui/core";
+import {
+    Card,
+    CardContent,
+    Typography,
+    CardActions,
+    Button,
+    IconButton,
+    makeStyles,
+    CardHeader
+} from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import {Post_I} from "../redux/types";
 import {useHistory} from "react-router-dom";
@@ -29,7 +38,7 @@ const Post: React.FC<Post_I> = ({title, body, id, comments}: Post_I) => {
                 <IconButton onClick={handleDeletePost}>
                     <CloseIcon/>
                 </IconButton>
-            } />
+            }/>
             <CardContent>
                 <Typography noWrap className={styles.title} variant="h2">
                     {title}
