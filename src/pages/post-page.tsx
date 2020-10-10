@@ -1,33 +1,34 @@
 import React from "react";
 import {useLocation} from "react-router-dom";
-import {Post_I} from "../../redux/types";
+import {Post_I} from "../redux/types";
 import {Container, Typography, makeStyles} from "@material-ui/core";
+import CommentsSection from "../components/comments-section.component";
 
 const PostPage: React.FC = () => {
 
-    const {title, id, body} = useLocation().state as Post_I;
+    const currentPost: Post_I = useLocation().state as Post_I;
     const styles = useStyles();
 
     return (
         <Container className={styles.page}>
-            <Typography component="h1" variant="h2">
-                {title}
+            <Typography component="h1" variant="h1">
+                {currentPost.title}
             </Typography>
             <Typography color="textSecondary" className={styles.article}>
-                {body}
+                {currentPost.body}
             </Typography>
-
+            <CommentsSection currentPost={currentPost}/>
         </Container>
     );
 }
 
 const useStyles = makeStyles(() => ({
     page: {
-        padding: "2rem"
+        padding: "1rem"
     },
 
     article: {
-        fontSize: "1.6rem",
+        fontSize: "1.4rem",
         margin: "2rem 0"
     }
 }));

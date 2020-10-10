@@ -1,9 +1,9 @@
 import React from 'react';
 import {Switch, Route, Redirect} from "react-router-dom";
 import "./basic.styles.scss";
-import HomePage from "./pages/homepage/homepage";
-import PostPage from "./pages/post/post-page";
-import CreatePostPage from "./pages/create-post/create-post-page";
+import HomePage from "./pages/homepage";
+import PostPage from "./pages/post-page";
+import CreatePostPage from "./pages/create-post-page";
 
 const App: React.FC = () => {
     return (

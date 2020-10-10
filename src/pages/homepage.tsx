@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Post_I, PostState_I} from "../../redux/types";
-import {fetchPosts} from "../../redux/actions";
-import Post from "../../components/post/post.component";
+import {Post_I, PostState_I} from "../redux/types";
+import {fetchPosts} from "../redux/actions";
+import Post from "../components/post.component";
 import {Grid, makeStyles, Container} from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
