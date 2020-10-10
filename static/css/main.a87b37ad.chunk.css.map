@@ -1,0 +1,1 @@
+{"version":3,"sources":["basic.styles.scss"],"names":[],"mappings":"AAAA,EACE,QAAS,CACT,SAAU,CACV,qBAAsB,CACvB,KAGC,gBAAiB","file":"main.a87b37ad.chunk.css","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-size: 1.6rem;\r\n}"]}
