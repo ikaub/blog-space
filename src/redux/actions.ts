@@ -29,9 +29,9 @@ export const addComment = (post: Post_I, comment: Comment_I): PostActionTypes =>
     payload: {post, comment}
 });
 
-export const deletePost = (post: Post_I): PostActionTypes => (<const>{
+export const deletePost = (postId: number): PostActionTypes => (<const>{
     type: DELETE_POST,
-    payload: post
+    payload: postId
 });
 
 export const updatePost = (modifiedPost: Post_I): PostActionTypes => (<const>{

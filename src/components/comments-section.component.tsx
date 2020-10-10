@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Comment_I, Post_I, PostState_I} from "../redux/types";
 import {Card, CardContent, CardHeader, Avatar, Typography, makeStyles} from "@material-ui/core";
 import InputSection from "./input-section.component";
@@ -17,8 +17,16 @@ const CommentsSection: React.FC<CurrentPost> = ({currentPost}: CurrentPost) => {
     const comments: Comment_I[] = useSelector((state: PostState_I) => state.posts)
         .find(post => post.id === currentPost.id)!.comments;
 
-    const handleAddComment = (comment: Comment_I) => {
+    const [comment, setComment] = useState<Comment_I>({author: "", content: ""});
+
+    const handleChange = (event: React.FormEvent<EventTarget>) => {
+        const target = event.target as HTMLInputElement;
+        setComment({...comment, [target.name]: target.value});
+    }
+
+    const handleAddComment = () => {
         dispatch(addComment(currentPost, comment));
+        setComment({author: "", content: ""});
     }
 
     return (
@@ -45,7 +53,15 @@ const CommentsSection: React.FC<CurrentPost> = ({currentPost}: CurrentPost) => {
                         There are no comments yet!
                     </Typography>
             }
-            <InputSection addComment={handleAddComment}/>
+            <InputSection
+                submitHandler={handleAddComment}
+                inputLabel="Author"
+                inputName="author"
+                inputValue={comment.author}
+                textareaName="content"
+                textareaValue={comment.content}
+                onChangeHandler={handleChange}
+            />
         </div>
     )
 };

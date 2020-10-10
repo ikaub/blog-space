@@ -28,10 +28,10 @@ function postReducer(state: PostState_I = initialState, action: PostActionTypes)
                 posts: state.posts.map(post => post.id === modifiedPost.id ? modifiedPost : post)
             };
         case DELETE_POST:
-            const postToDelete: Post_I = action.payload;
+            const postIdToDelete: number = action.payload;
             return {
                 ...state,
-                posts: state.posts.filter(post => post.id !== postToDelete.id)
+                posts: state.posts.filter(post => post.id !== postIdToDelete)
             };
         case ADD_COMMENT:
             const {post, comment}: { post: Post_I, comment: Comment_I } = action.payload;

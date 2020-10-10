@@ -32,7 +32,7 @@ interface UpdatePostAction_I {
 
 interface DeletePostAction_I {
     type: typeof DELETE_POST,
-    payload: Post_I
+    payload: number
 }
 
 interface AddPostAction_I {

@@ -1,55 +1,57 @@
-import React, {useState} from "react";
+import React, {ChangeEvent} from "react";
 import {TextareaAutosize, makeStyles, FormControl, InputLabel, Input, Button} from "@material-ui/core";
 import {Send} from "@material-ui/icons";
-import {Comment_I} from "../redux/types";
 
-type Huita = {
-    addComment: Function
+type InputProps = {
+    submitHandler: any,
+    inputLabel: string,
+    inputName: string,
+    inputValue: string,
+    textareaName: string,
+    textareaValue: string,
+    onChangeHandler: any
 }
 
-const InputSection: React.FC<Huita> = ({addComment}: Huita) => {
+const InputSection: React.FC<InputProps> =
+    ({
+         submitHandler, inputLabel, inputName, inputValue, textareaName, textareaValue, onChangeHandler
+     }: InputProps) => {
 
-    const styles = useStyles();
-    const [comment, setComment] = useState<Comment_I>({author: "", content: ""});
+        const styles = useStyles();
 
-    const handleChange = (event: React.FormEvent<EventTarget>) => {
-        const target = event.target as HTMLInputElement;
-        setComment({...comment, [target.name]: target.value});
-    }
-
-    return (
-        <form>
-            <FormControl className={styles.formControl}>
-                <InputLabel className={styles.inputField}>Author</InputLabel>
-                <Input
+        return (
+            <form>
+                <FormControl className={styles.formControl}>
+                    <InputLabel className={styles.inputField}>{inputLabel}</InputLabel>
+                    <Input
+                        required
+                        className={styles.input}
+                        value={inputValue}
+                        name={inputName}
+                        onChange={onChangeHandler}
+                    />
+                </FormControl>
+                <TextareaAutosize
+                    className={styles.comment}
                     required
-                    className={styles.input}
-                    value={comment.author}
-                    name="author"
-                    onChange={handleChange}
+                    cols={100}
+                    rows={15}
+                    value={textareaValue}
+                    name={textareaName}
+                    onChange={onChangeHandler}
                 />
-            </FormControl>
-            <TextareaAutosize
-                className={styles.comment}
-                required
-                cols={100}
-                rows={15}
-                value={comment.content}
-                name="content"
-                onChange={handleChange}
-            />
-            <Button
-                variant="contained"
-                color="default"
-                startIcon={<Send/>}
-                size="large"
-                onClick={() => addComment(comment)}
-            >
-                Post
-            </Button>
-        </form>
-    );
-}
+                <Button
+                    variant="contained"
+                    color="default"
+                    startIcon={<Send/>}
+                    size="large"
+                    onClick={submitHandler}
+                >
+                    Post
+                </Button>
+            </form>
+        );
+    }
 
 const useStyles = makeStyles(() => ({
     formControl: {

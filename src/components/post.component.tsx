@@ -1,12 +1,16 @@
 import React from "react";
-import {Card, CardContent, Typography, CardActions, Button, makeStyles} from "@material-ui/core";
+import {Card, CardContent, Typography, CardActions, Button, IconButton, makeStyles, CardHeader} from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
 import {Post_I} from "../redux/types";
 import {useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {deletePost} from "../redux/actions";
 
 const Post: React.FC<Post_I> = ({title, body, id, comments}: Post_I) => {
 
     const styles = useStyles();
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const handleCLick = () => {
         history.push({
@@ -15,8 +19,17 @@ const Post: React.FC<Post_I> = ({title, body, id, comments}: Post_I) => {
         });
     }
 
+    const handleDeletePost = () => {
+        dispatch(deletePost(id));
+    }
+
     return (
         <Card variant="outlined">
+            <CardHeader action={
+                <IconButton onClick={handleDeletePost}>
+                    <CloseIcon/>
+                </IconButton>
+            } />
             <CardContent>
                 <Typography noWrap className={styles.title} variant="h2">
                     {title}
