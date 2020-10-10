@@ -39,7 +39,7 @@ const Post: React.FC<Post_I> = ({title, body, id, comments}: Post_I) => {
                 </Typography>
             </CardContent>
             <CardActions className={styles.buttonContainer}>
-                <Button variant="contained" className={styles.button} onClick={handleCLick}>
+                <Button variant="contained" color="primary" onClick={handleCLick}>
                     Learn more...
                 </Button>
             </CardActions>
@@ -56,17 +56,6 @@ const useStyles = makeStyles(() => ({
     buttonContainer: {
         padding: "16px"
     },
-
-    button: {
-        backgroundColor: "black",
-        color: "white",
-        transition: ".4s",
-
-        '&:hover': {
-            backgroundColor: "white",
-            color: "black"
-        }
-    }
 }));
 
 export default Post;

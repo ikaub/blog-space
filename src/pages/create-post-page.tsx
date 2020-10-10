@@ -23,8 +23,11 @@ const CreatePostPage: React.FC = () => {
     }
 
     const handleAddPost = () => {
-        dispatch(addNewPost(postContent as Post_I));
-        history.push("/");
+        if (postContent.body.length && postContent.title.length) {
+            dispatch(addNewPost(postContent as Post_I));
+            history.push("/");
+        } else
+            alert("Input fields cannot be empty. Try again, please.");
     }
 
     return (

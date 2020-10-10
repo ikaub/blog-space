@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import {TextareaAutosize, makeStyles, FormControl, InputLabel, Input, Button} from "@material-ui/core";
 import {Send} from "@material-ui/icons";
 
@@ -42,7 +42,7 @@ const InputSection: React.FC<InputProps> =
                 />
                 <Button
                     variant="contained"
-                    color="default"
+                    color="primary"
                     startIcon={<Send/>}
                     size="large"
                     onClick={submitHandler}
